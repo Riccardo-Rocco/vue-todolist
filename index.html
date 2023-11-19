@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>ToDo List</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h1>Lista delle cose da fare</h1>
+      <input v-model="newTodo" type="text" placeholder="Aggiungi nuovo ToDo" id="newTodoInput" @keyup.enter="addTodo">
+      <button @click="addTodo">Aggiungi</button>
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index">
+          <span @click="toggleDone(index)" :style="{ 'text-decoration': todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>
+          <button @click="removeTodo(index)">X</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3.2.20/dist/vue.global.prod.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
